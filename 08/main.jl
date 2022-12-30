@@ -1,6 +1,6 @@
 using DSP
-fname = "08/testdata.txt"
-# fname = "08/data.txt"
+# fname = "08/testdata.txt"
+fname = "08/data.txt"
 
 trees = readlines(fname)
 trees = cat(map(x -> split(x, ""), trees); dims=(2))
@@ -30,7 +30,7 @@ println("res1 = $(sum(visible))")
 function find_view(th,r,c,dir)
     # dir: 1 top, 2 right, 3 bot, 4 left
     global trees
-    if (r == 1 && dir == 1) || (c == 1 && dir == 4) || (r = size(trees,1) && dir == 3) || (c = size(trees,2) && dir == 2)
+    if (r == 1 && dir == 3) || (c == 1 && dir == 4) || (r == size(trees,1) && dir == 1) || (c == size(trees,2) && dir == 2)
         return 1
     end
     if dir == 1
@@ -71,5 +71,4 @@ for r = 2:(size(trees,1)-1)
     end
 end
 
-@show sc
-println("res2 = $(minimum(sc))")
+println("res2 = $(maximum(sc))")
